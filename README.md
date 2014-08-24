@@ -40,13 +40,19 @@ tidy1 = combine[, c(1, 2, mean.std+2)]
 
 ## step 3
 
-Replace activity codes and the activity names in the "activity.labels" column
+Replace activity codes with activity names in the "activity.labels" column
 
 ```r
 for (i in 1:nrow(activity_labels)) {
     id = which(combine$activity.labels==i)
     combine$activity.labels[id] = as.character(activity_labels$activity[i])
 }
+```
+
+# recreate "tidy1" so that the "activity.labels" column contains descriptive values
+
+```r
+tidy1 = combine[, c(1, 2, mean.std+2)]
 ```
 
 ## step 5

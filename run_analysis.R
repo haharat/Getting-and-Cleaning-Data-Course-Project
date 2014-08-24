@@ -22,22 +22,24 @@ mean = grep("mean()", features$V2, fixed = T)
 std = grep("std()", features$V2, fixed = T)
 mean.std = c(grep("mean()", features$V2, fixed=T), grep("std()", features$V2, fixed = T))
 
-# creat a new table named "tidy1" that contains data only on mean and std by subsetting the "combine" table. I also included the two columns of subject and activity as the first two columns. Therefore "mean.std+2" are the real column numbers to be subsetted in the "combine" dataset
+# create a new table named "tidy1" that contains data only on mean and std by subsetting the "combine" table. I also included the two columns of subject and activity as the first two columns. Therefore "mean.std+2" are the real column numbers to be subsetted in the "combine" dataset
 tidy1 = combine[, c(1, 2, mean.std+2)]
 
 
 ## step 3
 
-# replace activity codes and the activity names in the "activity.labels" column
+# replace activity codes with activity names in the "activity.labels" column
 for (i in 1:nrow(activity_labels)) {
     id = which(combine$activity.labels==i)
     combine$activity.labels[id] = as.character(activity_labels$activity[i])
 }
 
+# recreate "tidy1" so that the "activity.labels" column contains descriptive values
+tidy1 = combine[, c(1, 2, mean.std+2)]
 
 # step 5
 
-# creat a new data table named "tidy2" with the average of each variable for each activity and each subject
+# create a new data table named "tidy2" with the average of each variable for each activity and each subject
 tidy2 = aggregate(tidy1[, 3:68], by = list(subject = tidy1$subject, activity = tidy1$activity.labels), FUN = mean)
 
 # creat a file with "tidy2" dataset
