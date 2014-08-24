@@ -42,5 +42,5 @@ tidy1 = combine[, c(1, 2, mean.std+2)]
 # create a new data table named "tidy2" with the average of each variable for each activity and each subject
 tidy2 = aggregate(tidy1[, 3:68], by = list(subject = tidy1$subject, activity = tidy1$activity.labels), FUN = mean)
 
-# create a file with "tidy2" dataset
-write.table(tidy2, "tidy2.txt", sep = "", row.name=FALSE)
+# cr a file with "tidy2" dataset
+write.table(tidy2, "tidy2.txt", row.name=FALSE)

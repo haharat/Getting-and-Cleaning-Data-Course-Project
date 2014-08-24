@@ -66,7 +66,7 @@ tidy2 = aggregate(tidy1[, 3:68], by = list(subject = tidy1$subject, activity = t
 creat a file with "tidy2" dataset
 
 ```r
-write.table(tidy2, "tidy2.txt", sep = "", row.name=FALSE)
+write.table(tidy2, "tidy2.txt", row.name=FALSE)
 ```
 
 
