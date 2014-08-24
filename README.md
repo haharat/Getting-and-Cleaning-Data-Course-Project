@@ -32,7 +32,7 @@ std = grep("std()", features$V2, fixed = T)
 mean.std = c(grep("mean()", features$V2, fixed=T), grep("std()", features$V2, fixed = T))
 ```
 
-Creat a new table named "tidy1" that contains data only on mean and std by subsetting the "combine" table. I also included the two columns of subject and activity as the first two columns. Therefore "mean.std+2" are the real column numbers to be subsetted in the "combine" dataset
+Create a new table named "tidy1" that contains data only on mean and std by subsetting the "combine" table. I also included the two columns of subject and activity as the first two columns. Therefore "mean.std+2" are the real column numbers to be subsetted in the "combine" dataset
 
 ```r
 tidy1 = combine[, c(1, 2, mean.std+2)]
@@ -57,7 +57,7 @@ tidy1 = combine[, c(1, 2, mean.std+2)]
 
 ## step 5
 
-Creat a new data table named "tidy2" with the average of each variable for each activity and each subject
+Create a new data table named "tidy2" with the average of each variable for each activity and each subject
 
 ```r
 tidy2 = aggregate(tidy1[, 3:68], by = list(subject = tidy1$subject, activity = tidy1$activity.labels), FUN = mean)
